@@ -2,9 +2,9 @@
 using namespace std;
 
 string remove_duplicates(string S){
-	int bv = 0;
+	int bv = 0; // bit set to store occurence of a character in string or not
 	for (int i = 0; i < S.length(); i++ ) {
-		int bp = S[i] - 'a';
+		int bp = S[i] - 'a'; 
 		if ( (bv >> bp) & 1) continue;
 		bv |= (1 << bp);
 	}
