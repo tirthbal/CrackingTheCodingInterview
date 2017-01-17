@@ -19,18 +19,18 @@ Output
 
 int **rotate_image_by_90(int image[][100], int rows, int cols) {
 	int **ans = 0;
-	ans = new int*[cols];
+	ans = new int*[cols + 10];
 
 	for(int i = 0; i < cols; i++){
-		for(int j = 0 ; j < rows; j++){
-			ans[i][j] = A[j][cols - i];
-		}
+		ans[i] = new int [rows];
+		for(int j = 0 ; j < rows; j++)
+			ans[i][j] = image[j][cols - 1 - i];
 	}
 	return ans;
 }
 
 
-void print(int image[][100], int rows, int cols) {
+void print(int **image, int rows, int cols) {
 	for (int i = 0; i < rows; i++){
 		for (int j = 0; j < cols; j++)
 			cout<<image[i][j]<<" ";
@@ -38,8 +38,9 @@ void print(int image[][100], int rows, int cols) {
 	}
 }
 
+
 int main(){
-	int image[100][100], **rotated_image
+	int image[100][100];
 	int rows, cols;
 
 	cout<<"Enter rows and cols for images"<<"\n";
@@ -50,7 +51,7 @@ int main(){
 		for (int j=0; j < cols; j++)
 			cin>>image[i][j];
 
-	rotated_image = rotate_image_by_90(image, rows, cols);
+	int** rotated_image = rotate_image_by_90(image, rows, cols);
 	print(rotated_image, cols, rows);
 	
 	return 0;
